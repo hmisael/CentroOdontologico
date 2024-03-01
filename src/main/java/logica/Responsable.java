@@ -1,21 +1,23 @@
-package Model;
+package logica;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Hernán Misael
  */
-public class Responsable extends Persona{
+@Entity
+public class Responsable extends Persona implements Serializable{
   
-   //private int idResponsable;
    private String tipoResponsabilidad;
 
     public Responsable() {
     }
 
-    public Responsable(String tipoResponsabilidad, String dni, String apellido, int telefono, String direccion, Date fechaNac) {
-        super(dni, apellido, telefono, direccion, fechaNac);
+    public Responsable(String tipoResponsabilidad, int id, String dni, String nombre, String apellido, int telefono, String direccion, Date fechaNac) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNac);
         this.tipoResponsabilidad = tipoResponsabilidad;
     }
 
@@ -27,5 +29,5 @@ public class Responsable extends Persona{
         this.tipoResponsabilidad = tipoResponsabilidad;
     }
 
-   
+    
 }

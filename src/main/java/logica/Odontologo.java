@@ -1,37 +1,36 @@
-package Model;
+package logica;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Hernán Misael
  */
-public class Odontologo extends Persona {
-    private int idOdontologo;
+@Entity
+public class Odontologo extends Persona implements Serializable {
+    
     private String especialidad;
+    @OneToMany(mappedBy="odontologo")
     private List<Turno> listaTurnos;
+    @OneToOne
     private Usuario usuario;
+    @OneToOne
     private Horario horario;
 
     public Odontologo() {
     }
 
-    public Odontologo(int idOdontologo, String especialidad, List<Turno> listaTurnos, Usuario usuario, Horario horario, String dni, String apellido, int telefono, String direccion, Date fechaNac) {
-        super(dni, apellido, telefono, direccion, fechaNac);
-        this.idOdontologo = idOdontologo;
+    public Odontologo(String especialidad, List<Turno> listaTurnos, Usuario usuario, Horario horario, int id, String dni, String nombre, String apellido, int telefono, String direccion, Date fechaNac) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNac);
         this.especialidad = especialidad;
         this.listaTurnos = listaTurnos;
         this.usuario = usuario;
         this.horario = horario;
-    }
-
-    public int getIdOdontologo() {
-        return idOdontologo;
-    }
-
-    public void setIdOdontologo(int idOdontologo) {
-        this.idOdontologo = idOdontologo;
     }
 
     public String getEspecialidad() {
@@ -66,8 +65,6 @@ public class Odontologo extends Persona {
         this.horario = horario;
     }
 
-    
-    
     
     
 }

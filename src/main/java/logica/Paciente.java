@@ -1,24 +1,31 @@
-package Model;
+package logica;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Hernán Misael
  */
-public class Paciente extends Persona{
-    //private int idPaciente;
+@Entity
+public class Paciente extends Persona implements Serializable {
+  
     private boolean tieneOS;
     private String tipoSangre;
+    @OneToOne
     private Responsable responsable;
+    @OneToMany(mappedBy="paciente")
     private List<Turno> listaTurnos;
 
     public Paciente() {
     }
 
-    public Paciente(boolean tieneOS, String tipoSangre, Responsable responsable, List<Turno> listaTurnos, String dni, String apellido, int telefono, String direccion, Date fechaNac) {
-        super(dni, apellido, telefono, direccion, fechaNac);
+    public Paciente(boolean tieneOS, String tipoSangre, Responsable responsable, List<Turno> listaTurnos, int id, String dni, String nombre, String apellido, int telefono, String direccion, Date fechaNac) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNac);
         this.tieneOS = tieneOS;
         this.tipoSangre = tipoSangre;
         this.responsable = responsable;

@@ -1,21 +1,25 @@
-package Model;
+package logica;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Hernán Misael
  */
-public class Secretario extends Persona{
-    //private int idSecretario;
+@Entity
+public class Secretario extends Persona implements Serializable{
     private String sector;
+    @OneToOne
     private Usuario usuario;
 
     public Secretario() {
     }
 
-    public Secretario(String sector, Usuario usuario, String dni, String apellido, int telefono, String direccion, Date fechaNac) {
-        super(dni, apellido, telefono, direccion, fechaNac);
+    public Secretario(String sector, Usuario usuario, int id, String dni, String nombre, String apellido, int telefono, String direccion, Date fechaNac) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNac);
         this.sector = sector;
         this.usuario = usuario;
     }
@@ -36,4 +40,6 @@ public class Secretario extends Persona{
         this.usuario = usuario;
     }
 
+
+    
 }
